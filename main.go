@@ -1,9 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
-	service "github.com/pardejini/backing-catalog/service"
+	"github.com/cloudfoundry-community/go-cfenv"
 )
 
 func main() {
@@ -12,8 +13,14 @@ func main() {
 		port = "3000"
 	}
 
+	appEnv, err := cfenv.Current()
+	if err != nil {
+		fmt.Println("CF Environment not detected.")
+	}
 	// Ordinarily we'd use a CF environment here, but we don't need it for
 	// the fake data we're returning.
-	server := service.NewServer()
+	// server := service.NewServer()
+
+	server := NewServerFromCFEnv(appEnv)
 	server.Run(":" + port)
 }

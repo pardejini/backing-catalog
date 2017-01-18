@@ -32,24 +32,24 @@ func NewServerFromCFEnv(appEnv *cfenv.App) *negroni.Negroni {
 
 // NewServer generates a real server that has access to the address of a
 // dependent service (fulfilment) to make requests
-// func NewServer() *negroni.Negroni {
-// 	formatter := render.New(render.Options{
-// 		IndentJSON: true,
-// 	})
-//
-// 	n := negroni.Classic()
-// 	mx := mux.NewRouter()
-// 	webClient := fulfillmentWebClient{
-// 		rootURL: "http://localhost:3001/skus/",
-// 	}
-//
-// 	initRoutes(mx, formatter, webClient)
-//
-// 	n.UseHandler(mx)
-//
-// 	return n
-//
-// }
+func NewServer() *negroni.Negroni {
+	formatter := render.New(render.Options{
+		IndentJSON: true,
+	})
+
+	n := negroni.Classic()
+	mx := mux.NewRouter()
+	webClient := fulfillmentWebClient{
+		rootURL: "http://localhost:3001/skus/",
+	}
+
+	initRoutes(mx, formatter, webClient)
+
+	n.UseHandler(mx)
+
+	return n
+
+}
 
 // NewServerFromClient configure and retuns a server
 func NewServerFromClient(webClient fulfillmentClient) *negroni.Negroni {

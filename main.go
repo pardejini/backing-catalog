@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/cloudfoundry-community/go-cfenv"
+	service "github.com/pardejini/backing-catalog/service"
 )
 
 func main() {
@@ -21,6 +22,6 @@ func main() {
 	// the fake data we're returning.
 	// server := service.NewServer()
 
-	server := NewServerFromCFEnv(appEnv)
+	server := service.NewServerFromCFEnv(appEnv)
 	server.Run(":" + port)
 }

@@ -1,0 +1,7 @@
+package: cloudnativego/backing-catalog
+import:
+- package: github.com/codegangsta/negroni
+  version: v0.2.0
+- package: github.com/gorilla/mux
+  version: v1.2.0
+- package: github.com/unrolled/render

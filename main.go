@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	service "cloudnativego/backing-catalog/service"
+	service "github.com/pardejini/backing-catalog/service"
 )
 
 func main() {

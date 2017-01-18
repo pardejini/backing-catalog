@@ -18,7 +18,7 @@ type fulfillmentWebClient struct {
 func (client fulfillmentWebClient) getFulfillmentStatus(sku string) (status fulfillmentStatus, err error) {
 	httpclient := &http.Client{}
 
-	skuURL := fmt.Sprintf("%s%s", client.rootURL, sku)
+	skuURL := fmt.Sprintf("%sskus/%s", client.rootURL, sku)
 	fmt.Printf("About to request SKU details from backing service: %s \n", skuURL)
 	req, _ := http.NewRequest("GET", skuURL, nil)
 	resp, err := httpclient.Do(req)
